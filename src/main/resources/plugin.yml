@@ -29,7 +29,7 @@ authors:
 commands:
   hypercore:
     permission: hypercore.cmd
-    permission-message: §cYou do not have permission to use this command.
+    permission-message: You do not have permission to use this command.
     description: Hypercore command
     aliases:
       - hc

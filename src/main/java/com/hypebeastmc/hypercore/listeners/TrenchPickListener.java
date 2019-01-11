@@ -57,13 +57,7 @@ public class TrenchPickListener implements Listener {
     	FPlayer fp = FPlayers.getInstance().getByPlayer(player);
         Faction playersFaction = fp.getFaction();
         Faction fAt = Board.getInstance().getFactionAt(new FLocation(player.getLocation()));
-  
-        
-        
-        
-        if(!FPlayers.getInstance().getByPlayer(player).isInOthersTerritory()) {
-        	
-        
+
 	
         if ((!event.isCancelled()) &&
                 (event.getPlayer().getItemInHand().getItemMeta().getLore() != null) && 
@@ -97,7 +91,6 @@ public class TrenchPickListener implements Listener {
             }
     
             	
-            }
         }
     }
 

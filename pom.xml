@@ -27,5 +27,12 @@
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!--Faction API-->
+        <dependency>
+            <groupId>com.massivecraft</groupId>
+            <artifactId>Factions</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+        </dependency>
     </dependencies>
 </project>

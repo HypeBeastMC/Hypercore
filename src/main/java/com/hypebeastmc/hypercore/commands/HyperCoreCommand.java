@@ -24,20 +24,13 @@
 
 package com.hypebeastmc.hypercore.commands;
 
+import com.hypebeastmc.hypercore.HyperCore;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import com.hypebeastmc.hypercore.util.ColorUtil;
 
 /**
  * @author JoeZwet
@@ -45,41 +38,7 @@ import com.hypebeastmc.hypercore.util.ColorUtil;
 public class HyperCoreCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
 
-        /* trench sub command */
-        if(args.length  >= 1) {
-            if(args[0].equalsIgnoreCase("trench")) {
-                if (commandSender.hasPermission("hypercore.trench"))
-                {
-                    ItemStack stack = new ItemStack(Material.DIAMOND_PICKAXE);
-                    ItemMeta meta = stack.getItemMeta();
-                    meta.setDisplayName(ColorUtil.color("&6&lTrench Pick "));
-                    List<String> lore = new ArrayList();
-                    lore.add("Breaks a 3x3 area.");
-                    meta.setLore(lore);
-                    stack.setItemMeta(meta);
-                    if ((commandSender instanceof Player)) {
-                        ((Player)commandSender).getInventory().addItem(new ItemStack[] { stack });
-                    } else if (args.length == 2) {
-                        if (Bukkit.getPlayer(args[1]) != null)
-                        {
-                            Bukkit.getPlayer(args[1]).getInventory().addItem(new ItemStack[] { stack });
-                            commandSender.sendMessage("Added trench pick to the inventory of " + Bukkit.getPlayer(args[1]).getDisplayName());
-                        }
-                        else
-                        {
-                            commandSender.sendMessage("Could not find the player: " + Bukkit.getPlayer(args[1]).getDisplayName());
-                        }
-                    }
-                }
-                else
-                {
-                    commandSender.sendMessage("Missing permission");
-                }
-            } else if(args[0].equalsIgnoreCase("help")) {
-                commandSender.sendMessage("boi you not gettin any help.");
-            }
-
-        }
+        HyperCore.instance.getHyperCoreSubCommandHandler().execute(commandSender, command, s, args);
         return true;
     }
 

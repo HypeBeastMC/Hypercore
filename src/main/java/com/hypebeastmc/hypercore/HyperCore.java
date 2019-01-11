@@ -28,6 +28,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.hypebeastmc.hypercore.commands.HyperCoreCommand;
+import com.hypebeastmc.hypercore.commands.HyperCoreSubCommandHandler;
+import com.hypebeastmc.hypercore.commands.sub.TrenchCommand;
 import com.hypebeastmc.hypercore.listeners.SoupListener;
 import com.hypebeastmc.hypercore.listeners.TrenchPickListener;
 import com.massivecraft.factions.P;
@@ -40,7 +42,9 @@ public class HyperCore extends JavaPlugin {
 
     /* Plugin Instance */
     public static HyperCore instance;
-	public P factions;
+
+    private HyperCoreSubCommandHandler hyperCoreSubCommandHandler = new HyperCoreSubCommandHandler();
+    public P factions;
 
     /* On Enable Event */
     @Override
@@ -50,13 +54,22 @@ public class HyperCore extends JavaPlugin {
         /* Set Command Executors */
         this.getCommand("hypercore").setExecutor(new HyperCoreCommand()); /* HyperCore Command Executor */
 
+        /* Register Sub Command */
+        this.getHyperCoreSubCommandHandler().registerSubCommand("trench", new TrenchCommand());
+
         /* Set Command Tab Completer */
         this.getCommand("hypercore").setTabCompleter(new HyperCoreCommand()); /* HyperCore Tab Completer */
 
         /* Register Event Listeners */
         this.getServer().getPluginManager().registerEvents(new SoupListener(), this); /* Soup Listener */
         this.getServer().getPluginManager().registerEvents(new TrenchPickListener(), this); /* Trench Pick Listener */
+
+        /* Set factions */
         this.factions = (P)Bukkit.getPluginManager().getPlugin("Factions");
-            }
+
     }
 
+    public HyperCoreSubCommandHandler getHyperCoreSubCommandHandler() {
+        return hyperCoreSubCommandHandler;
+    }
+}
