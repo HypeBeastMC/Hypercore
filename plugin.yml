@@ -1,0 +1,16 @@
+name: Hypercore
+version: 1.0-SNAPSHOT
+main: com.hypebeastmc.hypercore.HyperCore
+depend: [Factions]
+authors:
+  - JoeZwet
+  - ItsNotNiko
+commands:
+  hypercore:
+    permission: hypercore.cmd
+    permission-message: You do not have permission to use this command.
+    description: Hypercore command
+    aliases:
+      - hc
+      - core
+    usage: /hc help

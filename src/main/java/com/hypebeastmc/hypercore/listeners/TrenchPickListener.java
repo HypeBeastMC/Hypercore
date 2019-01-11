@@ -30,10 +30,19 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+
+import com.massivecraft.factions.Board;
+import com.massivecraft.factions.FLocation;
+import com.massivecraft.factions.FPlayer;
+import com.massivecraft.factions.FPlayers;
+import com.massivecraft.factions.Faction;
+import com.massivecraft.factions.iface.RelationParticipator;
+import com.massivecraft.factions.struct.Relation;
 
 /**
  * @author JoeZwet
@@ -44,9 +53,20 @@ public class TrenchPickListener implements Listener {
     @EventHandler
     public void onBlockBroken(BlockBreakEvent event)
     {
-        /* Check if the event is canceled by another plugin, the item has lore and the first line of lore is "Breaks a 3x3 area." */
+    	Player player = event.getPlayer();
+    	FPlayer fp = FPlayers.getInstance().getByPlayer(player);
+        Faction playersFaction = fp.getFaction();
+        Faction fAt = Board.getInstance().getFactionAt(new FLocation(player.getLocation()));
+  
+        
+        
+        
+        if(!FPlayers.getInstance().getByPlayer(player).isInOthersTerritory()) {
+        	
+        
+	
         if ((!event.isCancelled()) &&
-                (event.getPlayer().getItemInHand().getItemMeta().getLore() != null) &&
+                (event.getPlayer().getItemInHand().getItemMeta().getLore() != null) && 
                 (((String)event.getPlayer().getItemInHand().getItemMeta().getLore().get(0)).equalsIgnoreCase("Breaks a 3x3 area.")))
         {
             /* Item the server will use to break the blocks */
@@ -74,6 +94,9 @@ public class TrenchPickListener implements Listener {
                 }
                 loc.setY(loc.getBlockY() + 1);
                 loc.setZ(loc.getBlockZ() - 3);
+            }
+    
+            	
             }
         }
     }

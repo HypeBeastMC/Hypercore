@@ -36,7 +36,7 @@ public class ColorUtil {
      * @param message The message containing color chars.
      * @return The message with encoded color chars.
      */
-    public static String fromCodes(String message) {
+    public static String color(String message) {
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 }

@@ -24,6 +24,9 @@
 
 package com.hypebeastmc.hypercore.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -34,8 +37,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.hypebeastmc.hypercore.util.ColorUtil;
 
 /**
  * @author JoeZwet
@@ -50,7 +52,7 @@ public class HyperCoreCommand implements CommandExecutor, TabCompleter {
                 {
                     ItemStack stack = new ItemStack(Material.DIAMOND_PICKAXE);
                     ItemMeta meta = stack.getItemMeta();
-                    meta.setDisplayName("Trench Pick");
+                    meta.setDisplayName(ColorUtil.color("&6&lTrench Pick "));
                     List<String> lore = new ArrayList();
                     lore.add("Breaks a 3x3 area.");
                     meta.setLore(lore);

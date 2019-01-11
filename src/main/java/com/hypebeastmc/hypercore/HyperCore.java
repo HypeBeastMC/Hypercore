@@ -24,10 +24,13 @@
 
 package com.hypebeastmc.hypercore;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import com.hypebeastmc.hypercore.commands.HyperCoreCommand;
 import com.hypebeastmc.hypercore.listeners.SoupListener;
 import com.hypebeastmc.hypercore.listeners.TrenchPickListener;
-import org.bukkit.plugin.java.JavaPlugin;
+import com.massivecraft.factions.P;
 
 /**
  * @author JoeZwet
@@ -37,6 +40,7 @@ public class HyperCore extends JavaPlugin {
 
     /* Plugin Instance */
     public static HyperCore instance;
+	public P factions;
 
     /* On Enable Event */
     @Override
@@ -52,5 +56,7 @@ public class HyperCore extends JavaPlugin {
         /* Register Event Listeners */
         this.getServer().getPluginManager().registerEvents(new SoupListener(), this); /* Soup Listener */
         this.getServer().getPluginManager().registerEvents(new TrenchPickListener(), this); /* Trench Pick Listener */
+        this.factions = (P)Bukkit.getPluginManager().getPlugin("Factions");
+            }
     }
-}
+
