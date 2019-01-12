@@ -26,6 +26,10 @@ main: com.hypebeastmc.hypercore.HyperCore
 authors:
   - JoeZwet
   - ItsNotNiko
+depend:
+  - Factions
+  - WorldGuard
+  - WorldEdit
 commands:
   hypercore:
     permission: hypercore.cmd
