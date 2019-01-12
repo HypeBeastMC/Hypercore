@@ -1,15 +1,9 @@
 language: java
 sudo: false
 stages:
-  - worldguard
-  - factions
   - build
 jobs:
   include:
-    - stage: worldguard
-      script: mvn install:install-file -Dfile=lib\worldguard.jar -DgroupId=com.sk89q -DartifactId=WorldGuard -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
-    - stage: factions
-      script: mvn install:install-file -Dfile=lib\Factions.jar -DgroupId=com.massivecraft -DartifactId=Factions -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
     - stage: build
       script: mvn clean package verify
 after_success:
