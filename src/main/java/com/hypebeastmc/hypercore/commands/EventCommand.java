@@ -24,25 +24,23 @@
 
 package com.hypebeastmc.hypercore.commands;
 
-import com.hypebeastmc.hypercore.commands.api.SubCommand;
+import com.hypebeastmc.hypercore.HyperCore;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class HyperCoreSubCommandHandler {
+public class EventCommand implements CommandExecutor, TabCompleter {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-    private Map<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
+        HyperCore.instance.getEventSubCommandHandler().execute(commandSender, command, s, strings);
 
-
-    public void registerSubCommand(String name, SubCommand handler) {
-        subCommands.put(name, handler);
+        return false;
     }
 
-    public void execute(CommandSender sender, Command command, String name, String[] args) {
-        if(subCommands.containsKey(args[0])) {
-            subCommands.get(args[0]).onSubCommand(sender, command, name, args);
-        }
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+        return null;
     }
 }

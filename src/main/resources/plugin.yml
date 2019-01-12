@@ -35,3 +35,11 @@ commands:
       - hc
       - core
     usage: /hc help
+  event:
+    usage: /event start
+    permission: events.start
+    permission-message: You do not have permission to use this command.
+    description: The events command
+    aliases:
+      - e
+      - ev

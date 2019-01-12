@@ -31,10 +31,9 @@ import org.bukkit.command.CommandSender;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HyperCoreSubCommandHandler {
+public class EventSubCommandHandler {
 
     private Map<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
-
 
     public void registerSubCommand(String name, SubCommand handler) {
         subCommands.put(name, handler);

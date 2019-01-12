@@ -22,27 +22,30 @@
  *  SOFTWARE.
  */
 
-package com.hypebeastmc.hypercore.commands;
+package com.hypebeastmc.hypercore.events;
 
-import com.hypebeastmc.hypercore.commands.api.SubCommand;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class HyperCoreSubCommandHandler {
+/**
+ * Last Man Standing Event
+ * @author JoeZwet
+ */
+public class LMSEvent {
 
-    private Map<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
+    private List<UUID> players = new ArrayList<UUID>();
+    private UUID host;
 
-
-    public void registerSubCommand(String name, SubCommand handler) {
-        subCommands.put(name, handler);
+    public void initEvent(UUID host) {
+        this.host = host;
     }
 
-    public void execute(CommandSender sender, Command command, String name, String[] args) {
-        if(subCommands.containsKey(args[0])) {
-            subCommands.get(args[0]).onSubCommand(sender, command, name, args);
-        }
+    public interface Maps {
+        int RUINS = 0;
     }
+
 }

@@ -22,27 +22,32 @@
  *  SOFTWARE.
  */
 
-package com.hypebeastmc.hypercore.commands;
+package com.hypebeastmc.hypercore.listeners;
 
-import com.hypebeastmc.hypercore.commands.api.SubCommand;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class HyperCoreSubCommandHandler {
+public class EventGUIListener implements Listener {
 
-    private Map<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
+    private List<UUID> open = new ArrayList<UUID>();
 
 
-    public void registerSubCommand(String name, SubCommand handler) {
-        subCommands.put(name, handler);
+    public void open(UUID host) {
+        Inventory inventory = Bukkit.createInventory(null, 9, "Events GUI");
+
+        ItemStack lms = new ItemStack(Material.IRON_SWORD);
+        lms.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+        ItemMeta lmsMeta = lms.getItemMeta();
+
     }
 
-    public void execute(CommandSender sender, Command command, String name, String[] args) {
-        if(subCommands.containsKey(args[0])) {
-            subCommands.get(args[0]).onSubCommand(sender, command, name, args);
-        }
-    }
 }
