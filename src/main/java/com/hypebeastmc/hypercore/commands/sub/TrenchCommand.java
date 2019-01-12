@@ -12,6 +12,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author ItsNotNiko, JoeZwet
+ */
 public class TrenchCommand extends SubCommand {
 
     public boolean onSubCommand(CommandSender sender, Command command, String name, String[] args) {
