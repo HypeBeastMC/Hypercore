@@ -32,14 +32,16 @@
             <groupId>com.massivecraft</groupId>
             <artifactId>Factions</artifactId>
             <version>1.0</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/Factions.jar</systemPath>
         </dependency>
         <!--WorldGuard API-->
         <dependency>
             <groupId>com.sk89q</groupId>
             <artifactId>WorldGuard</artifactId>
             <version>1.0</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/worldguard.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
