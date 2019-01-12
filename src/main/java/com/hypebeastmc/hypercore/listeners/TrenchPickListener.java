@@ -7,14 +7,11 @@ import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.Factions;
 import com.sk89q.worldguard.bukkit.WGBukkit;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -22,7 +19,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class TrenchPickListener
   implements Listener
@@ -30,7 +26,7 @@ public class TrenchPickListener
   public static boolean BlockCheckBreak(Block block, Player player, boolean workInWild)
   {
     FPlayer fPlayer = FPlayers.getInstance().getByPlayer(player);
-    List<Faction> FacsToCheck = new ArrayList();
+    List<Faction> FacsToCheck = new ArrayList<Faction>();
     Faction playerFac = fPlayer.getFaction();
     Faction wild = Factions.getInstance().getWilderness();
     FacsToCheck.add(playerFac);
