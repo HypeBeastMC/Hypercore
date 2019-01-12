@@ -1,10 +1,17 @@
 language: java
 sudo: false
+stages:
+  - worldguard
+  - factions
+  - build
 jobs:
   include:
-    - script: mvn install:install-file -Dfile=lib\worldguard.jar -DgroupId=com.sk89q -DartifactId=WorldGuard -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
-    - script: mvn install:install-file -Dfile=lib\Factions.jar -DgroupId=com.massivecraft -DartifactId=Factions -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
-    - script: mvn clean package verify
+    - stage: worldguard
+      script: mvn install:install-file -Dfile=lib\worldguard.jar -DgroupId=com.sk89q -DartifactId=WorldGuard -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+    - stage: factions
+      script: mvn install:install-file -Dfile=lib\Factions.jar -DgroupId=com.massivecraft -DartifactId=Factions -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+    - stage: build
+      script: mvn clean package verify
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
