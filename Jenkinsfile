@@ -22,7 +22,7 @@ WEBHOOK_DATA=\'{
 }\'
 (curl --fail --progress-bar -A "Jenkins-Webhook" -H Content-Type:application/json -H X-Author:JoeZwet#6252 -d "$WEBHOOK_DATA" "$WEBHOOK_URL" \\
   && echo -e "\\\\n[Webhook]: Successfully sent the webhook.") || echo -e "\\\\n[Webhook]: Unable to send webhook."'''
-        build 'Hypercore'
+        build 'Hypercore/master'
       }
     }
   }
